@@ -1,0 +1,53 @@
+//By Storing Valid Characters in any other array
+
+class Solution {
+public:
+    bool isequal(int l,int r)
+    {
+        if(l==r ||(l>='A' && l<='Z' && r==l+32) || (r>='A' && r<='Z' && l==r+32))
+            return true;
+        return false;
+    }
+    bool isPalindrome(string s) 
+    {
+        int n=s.size(); 
+        vector<int> arr;
+        
+        if(n==0)
+            return true;
+        
+        int i=0;
+        
+        while(i<n)
+        {
+            if((s[i]>='A' && s[i]<='Z')|| (s[i]>='a' && s[i]<='z')|| (s[i]>='0' && s[i]<='9'))
+                arr.push_back(s[i]);
+            i++;
+        }
+        int l=0;
+        int r=arr.size();
+        
+        while(l<r)
+        {
+            if(isequal(arr[l],arr[r-1])==false)
+                return false;
+            l++;
+            r--;
+        }
+        return true;    
+    }
+};
+
+//Using two-pointers
+
+bool isPalindrome(string s) {
+        int left = 0, right = s.length()-1;
+        while(left<right)
+        {
+            if(!isalnum(s[left])) left++;
+            else if(!isalnum(s[right])) right--;
+            else if(tolower(s[left])!=tolower(s[right])) return false;
+            else {left++; right--;}
+        }
+        return true;
+    }
