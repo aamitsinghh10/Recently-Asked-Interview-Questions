@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int numSteps(string s) 
+    {
+        int res=0;
+        int j=s.size()-1;//jth pointer start from last bit of string
+        
+        while(j>0)
+        {
+            if(s[j]=='0')//divided by two case
+            {
+                j--;
+                res++;
+            }
+            else      //addition of 1 case
+            {
+                res++;
+                
+                //each 1 is converted to 0 and then divide them by 2
+                while(j>=0 && s[j]=='1')
+                {
+                    j--;
+                    res++;
+                }
+                if(j>0)//if j is not end then convert 0 to 1
+                    s[j]='1';
+            }
+        }
+        return res;
+    }
+};
