@@ -1,0 +1,21 @@
+class Solution {
+public:
+int solve(TreeNode *root,int sum)
+{
+    if(root==NULL)
+        return 0;
+    
+    sum=(sum<<1)+root->val;
+    
+    if(root->left==NULL && root->right==NULL)
+        return sum;
+    
+    return solve(root->left,sum)+solve(root->right,sum);
+}
+int sumRootToLeaf(TreeNode* root)
+{
+    int sum=0;
+    
+    return solve(root,0);
+}
+};
