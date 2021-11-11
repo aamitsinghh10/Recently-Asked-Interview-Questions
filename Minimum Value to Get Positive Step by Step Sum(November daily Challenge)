@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) 
+    {
+        int sum=nums[0];
+        int startvalue=nums[0];
+        
+        for(int i=1;i<nums.size();i++)
+        {
+            sum+=nums[i];
+            startvalue=min(sum,startvalue);
+        }
+         if(startvalue>=1)
+                return 1;
+        return 1-startvalue;
+    }
+};
