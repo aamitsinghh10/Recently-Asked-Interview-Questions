@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int longestconsecutivesum(long num)
+    {
+        return (int)((sqrt(1+(8*num))-1)/2);
+    }
+    int consecutiveNumbersSum(int n) 
+    {
+        int maxconsecutive=longestconsecutivesum(n);
+        int res=1;
+        
+        for(int i=2;i<=maxconsecutive;i++)
+        {
+            if(i%2==0 && n%i==i/2)
+                res++;
+            
+            else if(i%2==1 && n%i==0)
+                res++;
+        }
+        return res;
+    }
+};
